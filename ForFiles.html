@@ -1,0 +1,33 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container border border-success align-items-center justify-content-center d-flex h-100">
+<button id="btn" class="btn btn-md btn-primary m-1" onclick="getLocation()">Get Location</button>
+<div class="card h-25 w-50 d-block">
+<h1 class="card-title">Location</h1>
+<p id="data" class="card-text">Card Text</p>
+</div>
+</div>
+
+<script>
+const btn = document.getElementById("btn");
+const data = document.getElementById("data");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    data.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  data.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+</body>
+</html>
